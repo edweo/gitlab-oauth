@@ -1,0 +1,7 @@
+<div class="{{bg}} flex flex-col rounded p-2">
+    <label for={{name}} class="pl-1 pb-1 text-white font-bold">{{title}}</label>
+    <textarea class="txt-area {{bg}} p-2 font-bold scroll h-96" name={{name}}
+              id={{name}} rows="5" wrap="off">{{#if code}}{{preserveIndentTextArea code}}{{/if}}</textarea>
+</div>
+
+<script src={{baseUrl "/js/text_area_tab_indent.js"}}></script>

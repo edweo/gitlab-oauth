@@ -1,0 +1,8 @@
+{{#> forms/form width="w-96" title="Register at LNU GitLab Manager" bg="bg-black/10"
+                action="/register" imgSrc="/img/icon.png" flash=session.flash_message flash_color=session.flash_message_color}}
+    {{> forms/form_field title="Username" name="username" value="" input_type="text" bg="bg-black/10"}}
+    {{> forms/form_field title="Password" name="password" value="" input_type="password" bg="bg-black/10"}}
+
+    {{> forms/form_button text="Register" bg="bg-black/60" type="submit"}}
+    {{> forms/form_button_link href="login" text="Already have an account? Login" bg="bg-black/60"}}
+{{/forms/form}}

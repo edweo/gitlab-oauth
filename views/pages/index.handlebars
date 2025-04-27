@@ -1,0 +1,47 @@
+{{#> page logged_in=session.username}}
+    <div class="rounded flex flex-col items-center justify-center m-12 w-11/12 md:w-auto gap-2">
+        {{#if session.flash_message}}
+            <div style="background-color: {{session.flash_message_color}}" class="rounded flex flex-row gap-2 justify-start items-start bg-violet-400 p-1 w-full">
+                {{> svg_icons/warning_icon}}
+                <h1 class="text-white font-bold text-start leading-none self-center">{{session.flash_message}}</h1>
+            </div>
+        {{/if}}
+
+        {{#if gitlabAuthorized}}
+            <h1 class="text-black font-bold text-3xl">{{project_count}} GitLab Projects</h1>
+            <div class="flex w-full md:w-[700px] flex-col gap-4">
+                {{#each maintainer_projects}}
+                    {{> gitlab/project_card
+                            csrf=this.csrf
+                            form_action=this.url_action
+                            id=this.id
+                            stars=this.star_count
+                            description=this.description
+                            name=this.name
+                            owner_username=this.owner.username
+                    }}
+                {{/each}}
+            </div>
+        {{else}}
+            <div class="bg-white/30 rounded flex flex-col p-4 gap-4">
+                <h1 class="text-black font-bold text-3xl">Your account is not linked with GitLab</h1>
+                <a href={{baseUrl "/auth/gitlab/"}} class="bg-orange-300 rounded w-full
+                    p-4 font-bold text-white text-2xl flex items-center justify-center gap-4">
+                    <img src={{baseUrl "/img/gitlab.png"}} alt="gitlab-icon" class="h-8 w-8">
+                    Connect with GitLab
+                </a>
+            </div>
+        {{/if}}
+    </div>
+{{/page}}
+
+<script>
+    const project_cards = document.querySelectorAll('.project-card')
+    project_cards.forEach(card => {
+        const btn = card.querySelector('.btn-open-project')
+        card.addEventListener('click', e => {
+            e.stopPropagation()
+            btn.click()
+        })
+    })
+</script>

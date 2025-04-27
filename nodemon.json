@@ -1,0 +1,5 @@
+{
+  "watch": ["src/", "public/style.css"],
+  "ext": "ts, css, html, js",
+  "exec": "tsx --env-file=.env.dev app.ts"
+}

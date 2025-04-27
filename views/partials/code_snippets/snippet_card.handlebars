@@ -1,0 +1,27 @@
+<a href="snippets/view/{{id}}" class="bg-gradient-to-br from-orange-300 to-violet-300
+hover:from-orange-300/80 hover:to-violet-300/80 cursor-pointer
+shadow-md rounded p-3 w-full flex flex-col gap-1">
+    <h1 class="text-white font-bold text-2xl">{{title}}</h1>
+
+    <div class="bg-black/10 rounded p-2 min-h-44 max-h-44 overflow-hidden">
+        <code class="block">{{{preserveIndent code }}}</code>
+    </div>
+
+    {{#if tags}}
+        <div class="rounded p-1 flex flex-row flex-wrap gap-1">
+            <p class="text-white font-bold">Tags:</p>
+            <p>{{tags}}</p>
+        </div>
+    {{/if}}
+
+    <div class="flex flex-row items-center justify-between">
+        <div class="inline-flex flex-row rounded p-1 items-center justify-start gap-1">
+            {{> svg_icons/user_icon}}
+            <p class="text-white font-bold">{{by_user}}</p>
+        </div>
+        <div class="bg-black/10 flex flex-row justify-start items-center rounded p-1 gap-1">
+            <img src={{baseUrl img_language}} alt="programming language icon" height="20" width="20">
+            <p class="text-white">{{language}}</p>
+        </div>
+    </div>
+</a>
